@@ -1,22 +1,29 @@
+
 import { defineConfig, devices } from '@playwright/test';
 
-
-const config =({
+const config = defineConfig({
   testDir: './tests',
+  retries: 1,
+
   expect: {
     timeout: 40 * 1000,
   },
-  reporter: 'html',
+
+  reporter: [['html', { open: 'always' }]],
+
   use: {
+    baseURL: 'https://rahulshettyacademy.com/',
+    browserName: 'chromium',
     headless: false,
     trace: 'on',
   },
+
   projects: [
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
   ],
- 
 });
-module.exports = config
+
+export default config;
