@@ -37,7 +37,6 @@ test.only('Child Windows', async ({browser})=>{
     const context = await browser.newContext();
     const page = await context.newPage();
     const userName=  page.locator('#username');
-
     await page.goto('/loginpagePractise');
     const documentLink=  page.locator('[href*="documents-request"]');
     const [newPage] = await Promise.all([
@@ -51,9 +50,8 @@ test.only('Child Windows', async ({browser})=>{
     //console.log(domain);
     await page.locator('#username').fill(domain);
     console.log(await page.locator('#username').inputValue());
-    
 
-    
+
 
 
 
